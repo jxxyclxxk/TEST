@@ -3,14 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Night Letters — by Jack</title>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<title>Mackerel Night Sky — by Jack</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
 :root {
   --bg: #0a0d12;
-  --text: #e5e9f0; /* white/off-white for content */
+  --text: #e5e9f0; /* content text color */
   --muted: #8b95a1;
-  --accent: #a3b36f; /* olive site title */
+  --accent: #a3b36f; /* olive for decorative elements */
   --maxw: 720px;
 }
 
@@ -66,11 +69,10 @@ main {
 /* Header */
 header { text-align: center; margin-bottom: 60px; position: relative; }
 header h1 {
-  font-family: "EB Garamond", serif;
-  font-size: 32px;
-  font-weight: 500;
-  color: var(--accent);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
   letter-spacing: 0.03em;
+  color: var(--accent);
   animation: glow 2s infinite alternate;
 }
 @keyframes glow {
@@ -145,7 +147,7 @@ header p { color: var(--muted); font-size: 15px; }
 
 <main>
   <header>
-    <h1>Night Letters</h1>
+    <h1>Mackerel Night Sky</h1>
     <p>writings by Jack — dreams, reflections, and quiet things</p>
   </header>
 
@@ -213,9 +215,3 @@ document.querySelectorAll('.writing-title').forEach(button => {
     document.querySelectorAll('.writing-content').forEach(c => c.classList.remove('show'));
     // Toggle current content
     if(!isVisible) content.classList.add('show');
-  });
-});
-</script>
-
-</body>
-</html>
