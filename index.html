@@ -79,44 +79,57 @@ header h1 {
 }
 header p { color: var(--muted); font-size: 15px; }
 
-/* Writings */
-.writing {
-  margin-top: 60px;
-  padding: 20px;
+/* Collapsible writings */
+.writing-item {
+  margin-bottom: 20px;
   border-left: 3px solid var(--accent);
   background: rgba(255,255,255,0.02);
   border-radius: 4px;
+  overflow: hidden;
 }
 
-/* Only titles are light purple */
-.writing h2 {
+.writing-title {
+  background: none;
+  border: none;
   font-family: "EB Garamond", serif;
   color: #c8a2c8; /* light purple */
   font-size: 22px;
-  margin-bottom: 5px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  padding: 12px 20px;
 }
 
-/* Writing content */
-.writing .content p {
-  margin-bottom: 10px;
-  text-align: justify;
-  white-space: pre-line;
-  color: var(--text); /* white/off-white */
+.writing-title:hover {
+  text-decoration: underline;
 }
 
-/* Date */
-.writing .date {
+/* Fade-in animation for content */
+.writing-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.6s ease, opacity 0.6s ease;
+  padding: 0 20px;
+}
+
+.writing-content.show {
+  max-height: 2000px; /* enough for full content */
+  opacity: 1;
+  padding: 10px 20px 20px;
+}
+
+.writing-content .date {
   color: var(--muted);
   font-size: 13px;
   margin-bottom: 12px;
 }
 
-/* Footer */
-footer {
-  text-align: center;
-  color: var(--muted);
-  font-size: 13px;
-  margin-top: 80px;
+.writing-content p {
+  color: var(--text);
+  margin-bottom: 10px;
+  text-align: justify;
+  white-space: pre-line;
 }
 </style>
 </head>
@@ -136,91 +149,73 @@ footer {
     <p>writings by Jack — dreams, reflections, and quiet things</p>
   </header>
 
-  <!-- First writing -->
-  <div class="writing">
-    <h2>My Horizon For Ever</h2>
-    <div class="date">October 19, 2025</div>
-    <div class="content">
-      <p>Let’s say you’re a bird.</p>
-      <p>You’ve been flying because you believe that somewhere ahead, there might be a place meant for you to land.</p>
-      <p>But one day, you realize: the farther you fly, the less certain everything becomes.</p>
-      <p>There’s no sign saying, “Here’s a place for you.”</p>
-      <p>No perch waiting.</p>
-      <p>Or worse - the place itself might be rejecting you.</p>
-      <p>And yet, you cannot stop.</p>
-      <p>Not for lack of will, not for lack of weariness,
-      but because to pause - when nothing is certain - would be to accept that every beat of your wings, every mile flown, was in vain.</p>
-      <p>And to finally rest, you hope - at the very least - for the smallest mercy from that uncertainty: a whisper, a word, anything to say Stop.</p>
-      <p>But nothing comes.</p>
-      <p>By then, would you still keep flying?</p>
-      <p>How long could you keep believing when there’s nothing tangible to hold on to?</p>
-      <p>Do you believe that hard work always bears its reward?</p>
-      <p>So tell me — have you ever seen me flying toward you?</p>
-      <p>( It’s just a coincidence, a tragic incident, that the perch exists and the bird sees it but I had to articulate the bird's crash because it did happen inevitably and it was never your burden to carry )</p>
+  <div class="writing-list">
+    <!-- Writing 1 -->
+    <div class="writing-item">
+      <button class="writing-title">My Horizon For Ever</button>
+      <div class="writing-content">
+        <div class="date">October 19, 2025</div>
+        <p>Let’s say you’re a bird.</p>
+        <p>You’ve been flying because you believe that somewhere ahead, there might be a place meant for you to land.</p>
+        <p>But one day, you realize: the farther you fly, the less certain everything becomes.</p>
+        <p>There’s no sign saying, “Here’s a place for you.”</p>
+        <p>No perch waiting.</p>
+        <p>Or worse - the place itself might be rejecting you.</p>
+        <p>And yet, you cannot stop.</p>
+        <p>Not for lack of will, not for lack of weariness, but because to pause - when nothing is certain - would be to accept that every beat of your wings, every mile flown, was in vain.</p>
+        <p>And to finally rest, you hope - at the very least - for the smallest mercy from that uncertainty: a whisper, a word, anything to say Stop.</p>
+        <p>But nothing comes.</p>
+        <p>By then, would you still keep flying?</p>
+        <p>How long could you keep believing when there’s nothing tangible to hold on to?</p>
+        <p>Do you believe that hard work always bears its reward?</p>
+        <p>So tell me — have you ever seen me flying toward you?</p>
+        <p>(It’s just a coincidence, a tragic incident, that the perch exists and the bird sees it but I had to articulate the bird's crash because it did happen inevitably and it was never your burden to carry)</p>
+      </div>
+    </div>
+
+    <!-- Writing 2 -->
+    <div class="writing-item">
+      <button class="writing-title">The Fish I Never Caught</button>
+      <div class="writing-content">
+        <div class="date">September 15, 2023</div>
+        <p>There’s no particular food I crave, nor is there a specific person I intensely miss.</p>
+        <p>Every time it rains, I get wet. Just as I suspected — that once I bought one, it probably wouldn’t rain — well, look, the rain truly hasn’t come.</p>
+        <p>For no reason, sometimes I remember a place: Yangon’s Night Bazaar.</p>
+        <p>The fried beehoon with red sauce, the pork offal skewers from KyiMyinDaing…</p>
+        <p>I feel a kind of longing, or something like it. I don’t even understand myself.</p>
+        <p>It’s true. The things I don’t know for sure have multiplied.</p>
+        <p>Do I love this person? Am I even capable of love? Things like that, too.</p>
+        <p>And all that talk about “don’t reach for flowers you can’t grasp”… what is that?</p>
+        <p>I’ve never felt that I could truly reach anything. Since I never got to experience having things, I never had a standard for what is within reach and what isn’t.</p>
+        <p>The only standard I had was that if I wanted something, I’d at least try to get it.</p>
+        <p>The other day, I tried a new food — something deep-fried, coated in batter.</p>
+        <p>It was quite delicious, and I liked it, but I couldn’t figure out what kind of meat was stuffed inside.</p>
+        <p>Struggling for a long time, I finally realized: it was fish.</p>
+        <p>Ah… I had forgotten. I’d even forgotten what fish tastes like. It’s not that I couldn’t remember; I had made myself forget.</p>
+        <p>Wanting to swim to the other shore, I ended up deep under the ocean floor.</p>
+        <p>The calluses on my feet — no matter how many times I clip them with nail clippers — they just keep growing back.</p>
+        <p>Is life itself this hard already, or is there someone making it harder?</p>
+        <p>If there is, cut them off. Cut off friends even. Cut off lovers either.</p>
+        <p>For almost a whole lifetime, I never caught a single fish.</p>
+        <p>Look — just when I was about to catch one, the whole universe was pulled up, and my fishing rod bent and became a rainbow.</p>
+        <p>It was me who got caught, after all.</p>
+      </div>
     </div>
   </div>
-
-  <!-- Second writing -->
-  <div class="writing">
-    <h2>The Fish I Never Caught</h2>
-    <div class="date">September 15, 2023</div>
-    <div class="content">
-      <p>There’s no particular food I crave,
-      nor is there a specific person I intensely miss.</p>
-      <p>Every time it rains, I get wet.
-      Just as I suspected — that once I bought one, it probably wouldn’t rain —
-      well, look, the rain truly hasn’t come.</p>
-      <p>For no reason, sometimes I remember a place:
-      Yangon’s Night Bazaar.</p>
-      <p>The fried beehoon with red sauce,
-      the pork offal skewers from KyiMyinDaing…</p>
-      <p>I feel a kind of longing, or something like it.
-      I don’t even understand myself.</p>
-      <p>It’s true.
-      The things I don’t know for sure have multiplied.</p>
-      <p>Do I love this person?
-      Am I even capable of love?
-      Things like that, too.</p>
-      <p>And all that talk about “don’t reach for flowers you can’t grasp”…
-      what is that?</p>
-      <p>I’ve never felt that I could truly reach anything.
-      Since I never got to experience having things,
-      I never had a standard for what is within reach and what isn’t.</p>
-      <p>The only standard I had was that if I wanted something,
-      I’d at least try to get it.</p>
-      <p>The other day, I tried a new food —
-      something deep-fried, coated in batter.</p>
-      <p>It was quite delicious, and I liked it,
-      but I couldn’t figure out what kind of meat was stuffed inside.</p>
-      <p>Struggling for a long time, I finally realized:
-      it was fish.</p>
-      <p>Ah… I had forgotten.
-      I’d even forgotten what fish tastes like.
-      It’s not that I couldn’t remember;
-      I had made myself forget.</p>
-      <p>Wanting to swim to the other shore,
-      I ended up deep under the ocean floor.</p>
-      <p>The calluses on my feet —
-      no matter how many times I clip them with nail clippers —
-      they just keep growing back.</p>
-      <p>Is life itself this hard already,
-      or is there someone making it harder?</p>
-      <p>If there is, cut them off.
-      Cut off friends even.
-      Cut off lovers either.</p>
-      <p>For almost a whole lifetime,
-      I never caught a single fish.</p>
-      <p>Look — just when I was about to catch one,
-      the whole universe was pulled up,
-      and my fishing rod bent and became a rainbow.</p>
-      <p>It was me who got caught, after all.</p>
-    </div>
-  </div>
-
-  <footer>
-    © 2025 Jack — built with quiet & code
-  </footer>
 </main>
+
+<script>
+document.querySelectorAll('.writing-title').forEach(button => {
+  button.addEventListener('click', () => {
+    const content = button.nextElementSibling;
+    const isVisible = content.classList.contains('show');
+    // Hide all other contents
+    document.querySelectorAll('.writing-content').forEach(c => c.classList.remove('show'));
+    // Toggle current content
+    if(!isVisible) content.classList.add('show');
+  });
+});
+</script>
 
 </body>
 </html>
