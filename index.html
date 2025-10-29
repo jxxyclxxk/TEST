@@ -1,8 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mackerel Night Sky — by Jack</title>
 
 <!-- Google Fonts -->
@@ -11,127 +11,126 @@
 <style>
 :root {
   --bg: #0a0d12;
-  --text: #e5e9f0; /* content text color */
+  --text: #e5e9f0;
   --muted: #8b95a1;
-  --accent: #a3b36f; /* olive for decorative elements */
+  --accent: #a3b36f;
+  --title-purple: #c8a2c8;
   --maxw: 720px;
 }
 
-/* Basic resets */
-* { box-sizing: border-box; margin:0; padding:0; }
+/* Basic Reset */
+* { margin:0; padding:0; box-sizing:border-box; }
 body {
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: 'Inter', sans-serif;
   background: var(--bg);
   color: var(--text);
-  overflow-x: hidden;
-  position: relative;
-  min-height: 100vh;
-  padding: 48px 22px 80px;
-  display: flex;
-  justify-content: center;
-  line-height: 1.8;
+  line-height:1.8;
+  padding: 60px 20px 100px;
+  display:flex; justify-content:center;
+  min-height:100vh;
+  position:relative;
+  overflow-x:hidden;
 }
 
-/* Clouds */
+/* Night sky clouds */
 .clouds {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 200%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
+  position:fixed; top:0; left:0;
+  width:200%; height:100%;
+  pointer-events:none; z-index:0;
 }
 .cloud {
-  position: absolute;
-  background: rgba(255,255,255,0.15);
-  border-radius: 50%;
+  position:absolute; border-radius:50%;
   filter: blur(25px);
+  background: rgba(255,255,255,0.12);
   animation: drift linear infinite;
 }
-.cloud:nth-child(1) { width: 250px; height: 100px; top: 5%; left: -20%; animation-duration: 90s; }
-.cloud:nth-child(2) { width: 180px; height: 70px; top: 25%; left: -30%; animation-duration: 110s; }
-.cloud:nth-child(3) { width: 300px; height: 120px; top: 50%; left: -40%; animation-duration: 130s; }
-.cloud:nth-child(4) { width: 200px; height: 90px; top: 70%; left: -25%; animation-duration: 100s; }
-@keyframes drift {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(150vw); }
-}
+.cloud:nth-child(1){ width:250px; height:100px; top:10%; left:-20%; animation-duration:90s; }
+.cloud:nth-child(2){ width:180px; height:70px; top:30%; left:-35%; animation-duration:110s; }
+.cloud:nth-child(3){ width:300px; height:120px; top:55%; left:-40%; animation-duration:130s; }
+.cloud:nth-child(4){ width:200px; height:90px; top:75%; left:-25%; animation-duration:100s; }
 
-/* Layout */
+@keyframes drift { 0% { transform:translateX(0); } 100% { transform:translateX(150vw); } }
+
+/* Main container */
 main {
-  width: 100%;
-  max-width: var(--maxw);
-  position: relative;
-  z-index: 1;
+  width:100%; max-width: var(--maxw);
+  position:relative; z-index:1;
 }
 
 /* Header */
-header { text-align: center; margin-bottom: 60px; position: relative; }
+header { text-align:center; margin-bottom:60px; }
 header h1 {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 36px;
-  letter-spacing: 0.03em;
-  color: var(--accent);
-  animation: glow 2s infinite alternate;
+  font-size: 42px;
+  color: var(--accent); /* green */
+  letter-spacing:0.03em;
+  display:inline-block;
+  animation: scatterZoom 4s infinite alternate ease-in-out;
 }
-@keyframes glow {
-  0% { text-shadow: 0 0 8px var(--accent), 0 0 16px var(--accent); }
-  100% { text-shadow: 0 0 20px var(--accent), 0 0 40px var(--accent); }
-}
-header p { color: var(--muted); font-size: 15px; }
 
-/* Collapsible writings */
-.writing-item {
-  margin-bottom: 20px;
-  border-left: 3px solid var(--accent);
-  background: rgba(255,255,255,0.02);
-  border-radius: 4px;
-  overflow: hidden;
+@keyframes scatterZoom {
+  0%   { transform: scale(1); opacity: 0.85; }
+  50%  { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.85; }
 }
+
+header p {
+  color: var(--muted);
+  font-size:15px;
+  margin-top:6px;
+  font-style:italic;
+}
+
+/* Writing collapsible list */
+.writing-item {
+  border-left:3px solid var(--accent);
+  background: rgba(255,255,255,0.02);
+  margin-bottom:30px;
+  border-radius:6px;
+  overflow:hidden;
+  transition: transform 0.3s ease;
+}
+.writing-item:hover { transform: translateY(-3px); }
 
 .writing-title {
-  background: none;
-  border: none;
-  font-family: "EB Garamond", serif;
-  color: #c8a2c8; /* light purple */
-  font-size: 22px;
-  cursor: pointer;
-  width: 100%;
-  text-align: left;
-  padding: 12px 20px;
+  display:block;
+  width:100%;
+  background:none;
+  border:none;
+  padding: 18px 24px;
+  font-family: 'EB Garamond', serif;
+  font-size:24px;
+  color: var(--title-purple);
+  cursor:pointer;
+  transition: color 0.3s ease;
 }
-
 .writing-title:hover {
+  color: var(--accent);
   text-decoration: underline;
 }
 
-/* Fade-in animation for content */
 .writing-content {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.6s ease, opacity 0.6s ease;
-  padding: 0 20px;
+  max-height:0;
+  opacity:0;
+  overflow:hidden;
+  transition: max-height 0.6s ease, opacity 0.6s ease, padding 0.4s ease;
+  padding: 0 24px;
 }
-
 .writing-content.show {
-  max-height: 2000px; /* enough for full content */
-  opacity: 1;
-  padding: 10px 20px 20px;
+  max-height:2000px;
+  opacity:1;
+  padding: 10px 24px 24px;
 }
-
 .writing-content .date {
   color: var(--muted);
-  font-size: 13px;
-  margin-bottom: 12px;
+  font-size:13px;
+  margin-bottom:12px;
 }
-
 .writing-content p {
+  margin-bottom:14px;
   color: var(--text);
-  margin-bottom: 10px;
-  text-align: justify;
-  white-space: pre-line;
+  text-align:justify;
+  white-space:pre-line;
 }
 </style>
 </head>
@@ -148,7 +147,7 @@ header p { color: var(--muted); font-size: 15px; }
 <main>
   <header>
     <h1>Mackerel Night Sky</h1>
-    <p>writings by Jack — dreams, reflections, and quiet things</p>
+    <p>writings by Jack — beneath the nocturnal mackerel sky</p>
   </header>
 
   <div class="writing-list">
@@ -203,6 +202,7 @@ header p { color: var(--muted); font-size: 15px; }
         <p>It was me who got caught, after all.</p>
       </div>
     </div>
+
   </div>
 </main>
 
@@ -211,7 +211,11 @@ document.querySelectorAll('.writing-title').forEach(button => {
   button.addEventListener('click', () => {
     const content = button.nextElementSibling;
     const isVisible = content.classList.contains('show');
-    // Hide all other contents
     document.querySelectorAll('.writing-content').forEach(c => c.classList.remove('show'));
-    // Toggle current content
-    if(!isVisible) content.classList.add('show');
+    if (!isVisible) content.classList.add('show');
+  });
+});
+</script>
+
+</body>
+</html>
