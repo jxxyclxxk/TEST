@@ -117,10 +117,11 @@ header p {
   padding: 0 24px;
 }
 .writing-content.show {
-  max-height:2000px;
+  max-height:99999px; /* Setting a very high max-height effectively removes the limit */
   opacity:1;
   padding: 10px 24px 24px;
 }
+
 .writing-content .date {
   color: var(--muted);
   font-size:13px;
