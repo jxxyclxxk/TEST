@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mackerel Night Sky — by Jack</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400;700&family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* -----------------------------------------------------------------------------------
+ * REVISED CSS FOR GIVENCHY-INSPIRED LOOK (Mobile Optimized)
+ * ----------------------------------------------------------------------------------- */
+:root {
+  --bg: #000000;         /* Black background */
+  --text: #e5e9f0;       /* Off-white text */
+  --muted: #8b95a1;
+  --accent: #ffffff;     /* White accent for core name */
+  --title-color: #ffffff; /* White for post titles */
+  --maxw: 1200px;        /* Increased max width for 3 columns */
+}
+
+/* Basic Reset */
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height:1.8;
+  padding: 0; 
+  display:flex; justify-content:center;
+  min-height:100vh;
+  position:relative;
+  overflow-x:hidden;
+}
+
+/* Night sky clouds - Hiding for cleaner Givenchy look */
+.clouds { display: none; }
+
+/* Main container */
+main {
+  width:100%; 
+  max-width: var(--maxw);
+  position:relative; z-index:1;
+  padding: 40px 10px 80px; /* Reduced padding for mobile */
+}
+
+/* Header - CORE NAME */
+header { text-align:center; margin-bottom: 60px; margin-top: 20px;}
+header h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 50px; /* Reduced size for mobile */
+  color: var(--accent);
+  letter-spacing:0.1em;
+  display:block;
+  font-weight: 700;
+  margin-bottom: 5px;
+  line-height: 1; /* Tighter line spacing */
+}
+
+header p {
+  color: var(--muted);
+  font-size:14px; /* Reduced size for mobile */
+  font-style:italic;
+  text-transform: uppercase;
+}
+
+/* -----------------------------------------------------------------------------------
+ * 3-COLUMN IMAGE GRID STYLES
+ * ----------------------------------------------------------------------------------- */
+.writing-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Default to 1 column for mobile */
+  gap: 30px; /* Space between items */
+}
+
+.writing-item {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  margin-bottom: 0; 
+}
+
+.post-image-container {
+    position: relative;
+    width: 100%;
+    /* Aspect ratio for the image container - now rectangular instead of square */
+    padding-top: 75%; /* 4:3 Aspect Ratio (75% of width) */
+    overflow: hidden; 
+}
+
+.post-image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.writing-item:hover img {
+    transform: scale(1.03);
+}
+
+.post-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 15px;
+    background: rgba(0, 0, 0, 0.6); 
+    color: var(--title-color);
+    font-family: 'EB Garamond', serif;
+    font-size: 18px; /* Reduced font size for mobile */
+    font-weight: 500;
+    text-align: center;
+    transition: background 0.3s ease;
+}
+
+.writing-item:hover .post-title {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* -----------------------------------------------------------------------------------
+ * COLLAPSIBLE CONTENT STYLES
+ * ----------------------------------------------------------------------------------- */
+.writing-content {
+  max-height:0;
+  opacity:0;
+  overflow:hidden;
+  transition: max-height 0.6s ease, opacity 0.6s ease, padding 0.4s ease;
+  background: #111111; 
+  padding: 0 15px; /* Reduced padding for mobile */
+  margin-bottom: 30px;
+  width: 100%;
+  
+}
+.writing-content.show {
+  max-height:99999px; 
+  opacity:1;
+  padding: 20px 15px 30px; /* Reduced padding for mobile */
+}
+
+.writing-content .date {
+  color: var(--muted);
+  font-size:14px; 
+  margin-bottom:15px;
+  text-align: center;
+}
+.writing-content p {
+  margin-bottom:15px;
+  color: var(--text);
+  text-align:justify;
+  white-space:pre-line;
+}
+
+/* DESKTOP VIEWPORT: Adjusts back to 3 columns on larger screens */
+@media (min-width: 769px) {
+  .writing-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
+    gap: 20px;
+  }
+  main {
+    padding: 60px 20px 100px;
+  }
+  header h1 {
+    font-size: 80px;
+  }
+  .writing-content {
+    grid-column: 1 / -1; /* Makes the content span all 3 columns */
+  }
+  .writing-content p {
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  .post-title {
+      font-size: 24px;
+  }
+}
+</style>
+</head>
+<body>
+
+<main>
+  <header>
+    <h1>MACKEREL NIGHT SKY</h1>
+    <p>writings by Jack — beneath the nocturnal mackerel sky</p>
+  </header>
+
+  <div class="writing-grid">
+    
+    <div class="writing-item" data-post-id="post-3">
+        <div class="post-image-container">
+            <img src="https://picsum.photos/id/1018/600/450" alt="He Danced Like A Man. He Danced Like A Girl">
+            <div class="post-title">He Danced Like A Man. He Danced Like A Girl</div>
+        </div>
+    </div>
+    
+    <div class="writing-item" data-post-id="post-1">
+        <div class="post-image-container">
+            <img src="https://picsum.photos/id/1040/600/450" alt="My Horizon For Ever">
+            <div class="post-title">My Horizon For Ever</div>
+        </div>
+    </div>
+
+    <div class="writing-item" data-post-id="post-2">
+        <div class="post-image-container">
+            <img src="https://picsum.photos/id/1050/600/450" alt="The Fish I Never Caught">
+            <div class="post-title">The Fish I Never Caught</div>
+        </div>
+    </div>
+
+  </div> <div class="writing-content" id="content-post-3">
+        <div class="date">November 22, 2025</div>
+        <p>Ba Took was born in the 1980s in Myanmar. His mother died when he was sixteen. Like most children, he loved his mother more than his father, but what truly set him apart was that he was gay, living in a time and place where there was almost no awareness or acceptance of LGBTQ+ people. I don’t know how he managed, and I’ll never fully understand what he had to face.</p>
+        <p>Unlike what stereotypes might suggest, he presented himself in a traditionally masculine way. He dressed like a man, spoke like a man, and loved wearing traditional Myanmar attire, especially the gaung baung, the white headdress that Myanmar men wear on formal occasions. People whispered that he had a husband whom he kept close. Somehow, he built a life for himself even as his family’s business fell apart. That strength was something most people failed to see or appreciate.</p>
+        <p>He was a nat kadaw, a spirit medium in Myanmar’s traditional spirit worship. When he danced at those spiritual events, he transformed. He danced like a man. He danced like a girl. (Kindly search Ko Gyi Kyaw and Ma Hne Lay on Google for a better understanding of these two lines.) He danced like he had all this power to command at the tip of his finger.</p>
+        <p>I often saw him during a ritual bathing ceremony, gripping a nat statue and swimming across the Zaw Gyi River, a river with a dark reputation. People say it was created by King Anawrahta centuries ago through the sacrifice of people buried beneath its current. Even now, locals believe the river claims the lives of people from towns whose names begin with certain Burmese letters unless they pay respect before crossing.</p>
+        <p>The Zaw Gyi has taken many lives. To see him swim across it, statue held high while the crowd watched in silence — in my eyes, he was indeed superhuman. He was, for sure, a legend. But death came to him without knocking on his door. Not even a signal. He died on January 15, 2024. His last breath, I heard, was gentle.</p>
+        <p>He had saved a considerable amount of money throughout his life, but he never wrote a will. After he died, I watched his relatives divide and claim what he had left behind.</p>
+        <p>That was when a thought struck me, sudden, cold, and inescapable.</p>
+        <p>Did he not leave a will because he thought he still had time? Or did he know it was coming but couldn’t decide who to trust with what he’d earned? Now, all that money, saved through a lifetime of work — and he would never know who took it or how they used it. Had he ever truly enjoyed his life? Was that it? Was this all there was?</p>
+        <p>I was startled by my own thoughts. It was a lesson I’d never read in any book or seen in daily life — a lesson his death carved into me. I felt both saddened and awakened.</p>
+        <p>I don’t want to work hard just to have the mere feeling of financial freedom. I don’t want my lifetime savings to go to waste without any purpose. If he could answer one last time, I know he would have wanted to donate it all.</p>
+        <p>I miss you, Ba Ba Took.</p>
+        <p>I remember those early mornings when you and I went to the tea shop and stopped by a bookstore, and you always bought me cartoon journals.</p>
+        <p>I remember going to the market with you where you bought flowers to offer to Buddha.</p>
+        <p>I remember how you taught me to wear longyi.</p>
+        <p>I remember ကလေးကွမ်းယာ and your ကွမ်းအစ်.</p>
+        <p>I remember that I was once your ultimate favorite child.</p>
+        <p>I remember you said that your gold necklace was for me, and all I wanted was to look after you, even when you slightly changed as we grew older.</p>
+        <p>I hope you’re in a good place now. I wish this is the first and last time my hometown no longer has my beloved ones, if I ever get the chance to come back.</p>
+        <p>Rest well.</p>
+    </div>
+
+    <div class="writing-content" id="content-post-1">
+        <div class="date">October 19, 2025</div>
+        <p>Let’s say you’re a bird.</p>
+        <p>You’ve been flying because you believe that somewhere ahead, there might be a place meant for you to land.</p>
+        <p>But one day, you realize: the farther you fly, the less certain everything becomes.</p>
+        <p>There’s no sign saying, “Here’s a place for you.”</p>
+        <p>No perch waiting.</p>
+        <p>Or worse - the place itself might be rejecting you.</p>
+        <p>And yet, you cannot stop.</p>
+        <p>Not for lack of will, not for lack of weariness, but because to pause - when nothing is certain - would be to accept that every beat of your wings, every mile flown, was in vain.</p>
+        <p>And to finally rest, you hope - at the very least - for the smallest mercy from that uncertainty: a whisper, a word, anything to say Stop.</p>
+        <p>But nothing comes.</p>
+        <p>By then, would you still keep flying?</p>
+        <p>How long could you keep believing when there’s nothing tangible to hold on to?</p>
+        <p>Do you believe that hard work always bears its reward?</p>
+        <p>So tell me — have you ever seen me flying toward you?</p>
+        <p>(It’s just a coincidence, a tragic incident, that the perch exists and the bird sees it but I had to articulate the bird's crash because it did happen inevitably and it was never your burden to carry)</p>
+    </div>
+    
+    <div class="writing-content" id="content-post-2">
+        <div class="date">September 15, 2023</div>
+        <p>There’s no particular food I crave, nor is there a specific person I intensely miss.</p>
+        <p>Every time it rains, I get wet. Just as I suspected — that once I bought one, it probably wouldn’t rain — well, look, the rain truly hasn’t come.</p>
+        <p>For no reason, sometimes I remember a place: Yangon’s Night Bazaar.</p>
+        <p>The fried beehoon with red sauce, the pork offal skewers from KyiMyinDaing…</p>
+        <p>I feel a kind of longing, or something like it. I don’t even understand myself.</p>
+        <p>It’s true. The things I don’t know for sure have multiplied.</p>
+        <p>Do I love this person? Am I even capable of love? Things like that, too.</p>
+        <p>And all that talk about “don’t reach for flowers you can’t grasp”… what is that?</p>
+        <p>I’ve never felt that I could truly reach anything. Since I never got to experience having things, I never had a standard for what is within reach and what isn’t.</p>
+        <p>The only standard I had was that if I wanted something, I’d at least try to get it.</p>
+        <p>The other day, I tried a new food — something deep-fried, coated in batter.</p>
+        <p>It was quite delicious, and I liked it, but I couldn’t figure out what kind of meat was stuffed inside.</p>
+        <p>Struggling for a long time, I finally realized: it was fish.</p>
+        <p>Ah… I had forgotten. I’d even forgotten what fish tastes like. It’s not that I couldn’t remember; I had made myself forget.</p>
+        <p>Wanting to swim to the other shore, I ended up deep under the ocean floor.</p>
+        <p>The calluses on my feet — no matter how many times I clip them with nail clippers — they just keep growing back.</p>
+        <p>Is life itself this hard already, or is there someone making it harder?</p>
+        <p>If there is, cut them off. Cut off friends even. Cut off lovers either.</p>
+        <p>For almost a whole lifetime, I never caught a single fish.</p>
+        <p>Look — just when I was about to catch one, the whole universe was pulled up, and my fishing rod bent and became a rainbow.</p>
+        <p>It was me who got caught, after all.</p>
+    </div>
+
+</main>
+
+<script>
+// REVISED JAVASCRIPT: Listens for clicks on the image post and reveals the corresponding content div.
+document.querySelectorAll('.writing-item').forEach(item => {
+  item.addEventListener('click', () => {
+    // 1. Get the ID of the content to be shown (e.g., 'post-3')
+    const postId = item.getAttribute('data-post-id');
+    const contentToShow = document.getElementById('content-' + postId);
+    
+    // 2. Determine if this content is already visible
+    const isVisible = contentToShow.classList.contains('show');
+    
+    // 3. Hide ALL content sections
+    document.querySelectorAll('.writing-content').forEach(c => c.classList.remove('show'));
+    
+    // 4. If it was NOT visible, show it now
+    if (!isVisible) {
+      contentToShow.classList.add('show');
+      // Optional: scroll to the revealed content
+      contentToShow.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
