@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mackerel Night Sky — by Jack</title>
 
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --bg: #0a0d12;
-  --text: #e5e9f0;
-  --muted: #8b95a1;
-  --accent: #a3b36f;
-  --title-purple: #c8a2c8;
+  /* Updated to pure black and white */
+  --bg: #000000; /* Pure black background */
+  --text: #ffffff; /* Pure white text */
+  --muted: #aaaaaa; /* Lighter gray for muted text */
+  --accent: #ffffff; /* White accent color */
+  --title-purple: #ffffff; /* White title color */
   --maxw: 720px;
 }
 
@@ -22,7 +22,9 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 body {
   font-family: 'Inter', sans-serif;
+  /* Use the updated black background variable */
   background: var(--bg);
+  /* Use the updated white text variable */
   color: var(--text);
   line-height:1.8;
   padding: 60px 20px 100px;
@@ -32,29 +34,10 @@ body {
   overflow-x:hidden;
 }
 
-/* Night sky clouds */
-.clouds {
-  position:fixed; top:0; left:0;
-  width:200%; height:100%;
-  pointer-events:none; z-index:0;
-}
-.cloud {
-  position:absolute; border-radius:50%;
-  filter: blur(25px);
-  background: rgba(255,255,255,0.12);
-  animation: drift linear infinite;
-}
-.cloud:nth-child(1){ width:250px; height:100px; top:10%; left:-20%; animation-duration:90s; }
-.cloud:nth-child(2){ width:180px; height:70px; top:30%; left:-35%; animation-duration:110s; }
-.cloud:nth-child(3){ width:300px; height:120px; top:55%; left:-40%; animation-duration:130s; }
-.cloud:nth-child(4){ width:200px; height:90px; top:75%; left:-25%; animation-duration:100s; }
-
-@keyframes drift { 0% { transform:translateX(0); } 100% { transform:translateX(150vw); } }
-
 /* Main container */
 main {
   width:100%; max-width: var(--maxw);
-  position:relative; z-index:1;
+  position:relative;
 }
 
 /* Header */
@@ -62,16 +45,10 @@ header { text-align:center; margin-bottom:60px; }
 header h1 {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 42px;
-  color: var(--accent); /* green */
+  color: var(--accent);
   letter-spacing:0.03em;
   display:inline-block;
-  animation: scatterZoom 4s infinite alternate ease-in-out;
-}
-
-@keyframes scatterZoom {
-  0%   { transform: scale(1); opacity: 0.85; }
-  50%  { transform: scale(1.08); opacity: 1; }
-  100% { transform: scale(1); opacity: 0.85; }
+  /* Removed animation */
 }
 
 header p {
@@ -83,14 +60,16 @@ header p {
 
 /* Writing collapsible list */
 .writing-item {
+  /* Updated border to white */
   border-left:3px solid var(--accent);
-  background: rgba(255,255,255,0.02);
+  /* Changed background to be less distracting/removed particle effect */
+  background: rgba(255,255,255,0.05); /* Very slight off-black background */
   margin-bottom:30px;
   border-radius:6px;
   overflow:hidden;
-  transition: transform 0.3s ease;
+  /* Removed animation/transform transition */
 }
-.writing-item:hover { transform: translateY(-3px); }
+/* Removed .writing-item:hover transform */
 
 .writing-title {
   display:block;
@@ -102,7 +81,8 @@ header p {
   font-size:24px;
   color: var(--title-purple);
   cursor:pointer;
-  transition: color 0.3s ease;
+  /* Changed transition to be less distracting */
+  transition: text-decoration 0.3s ease;
 }
 .writing-title:hover {
   color: var(--accent);
@@ -117,7 +97,7 @@ header p {
   padding: 0 24px;
 }
 .writing-content.show {
-  max-height:99999px; /* Setting a very high max-height effectively removes the limit */
+  max-height:99999px;
   opacity:1;
   padding: 10px 24px 24px;
 }
@@ -137,22 +117,13 @@ header p {
 </head>
 <body>
 
-<!-- Clouds -->
-<div class="clouds">
-  <div class="cloud"></div>
-  <div class="cloud"></div>
-  <div class="cloud"></div>
-  <div class="cloud"></div>
-</div>
-
 <main>
   <header>
     <h1>Mackerel Night Sky</h1>
-    <p>writings by Jack — beneath the nocturnal mackerel sky</p>
+    <p>writings by Jack</p>
   </header>
 
   <div class="writing-list">
-    <!-- Writing 1 -->
     <div class="writing-item">
       <button class="writing-title">My Horizon For Ever</button>
       <div class="writing-content">
@@ -175,7 +146,6 @@ header p {
       </div>
     </div>
 
-    <!-- Writing 2 -->
     <div class="writing-item">
       <button class="writing-title">The Fish I Never Caught</button>
       <div class="writing-content">
@@ -204,7 +174,6 @@ header p {
       </div>
     </div>
 
-    <!-- Writing 3 -->
     <div class="writing-item">
       <button class="writing-title">He Danced Like A Man. He Danced Like A Girl</button>
       <div class="writing-content">
